@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07152f">
+<title>SK GOLD RUSH</title>
+<style>
+:root{--bg:#061329;--panel:#0b2041;--gold:#ffc928;--gold2:#ff9d00;--text:#fff8df;--muted:#a9bad5;--line:#80520a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 20%,#173b70 0,#07152f 48%,#030a18 100%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+.wrap{max-width:520px;margin:auto;padding:14px 13px 92px}.top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:4px 2px 14px}.brand{display:flex;align-items:center;gap:9px;font-weight:1000;font-size:clamp(20px,6vw,29px);font-style:italic;color:var(--gold);text-shadow:0 2px 0 #7a3900,0 0 14px #ffb30066}.gem{font-size:29px;filter:drop-shadow(0 0 8px #ffc928)}.season{border:1px solid var(--gold2);border-radius:20px;padding:7px 11px;color:var(--gold);font-weight:800;font-size:12px}
+.stats{display:grid;grid-template-columns:1fr 1.45fr 1fr;gap:7px}.stat,.panel{background:linear-gradient(145deg,#102b53,#07162f);border:1px solid #9a640e;box-shadow:inset 0 0 0 1px #ffcf4933,0 5px 14px #0008;border-radius:15px;padding:12px 9px;text-align:center}.stat small{color:var(--muted);font-weight:700}.stat strong{display:block;color:var(--gold);font-size:17px;margin-top:4px}.balance{border:2px solid var(--gold);padding:10px 5px}.balance strong{font-size:clamp(25px,8vw,35px);line-height:1.1}.balance small{font-size:11px}.energybar{height:8px;border-radius:10px;background:#152c4a;margin-top:7px;overflow:hidden}.energybar span{display:block;height:100%;width:100%;background:linear-gradient(90deg,#00b9ff,#37e7ff);transition:width .2s}
+.taparea{text-align:center;padding:20px 0 13px;position:relative}.hint{font-size:13px;color:#ffdf76;font-weight:800;margin-bottom:12px}.coin{width:min(67vw,260px);height:min(67vw,260px);max-width:260px;max-height:260px;border-radius:50%;border:9px ridge #ffdf62;background:radial-gradient(circle at 35% 25%,#fff4a5 0,#ffcf39 20%,#d77b00 68%,#8a4300 100%);box-shadow:0 0 0 6px #5b350a,0 0 35px #ffbf24aa,inset 0 0 20px #fff5a8;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:auto;color:#542800;cursor:pointer;user-select:none;touch-action:manipulation;transition:transform .08s}.coin:active{transform:scale(.96)}.crown{font-size:30px;line-height:1}.coinlogo{font-size:clamp(37px,10vw,50px);font-weight:1000;line-height:1;text-shadow:0 2px 0 #ffed9b}.coinname{font-weight:1000;font-size:clamp(17px,5vw,23px);font-style:italic}.tapnote{margin-top:12px;font-weight:900;color:#ffe15e;text-shadow:0 2px #663500}.sectiontitle{color:var(--gold);font-weight:1000;font-size:19px;text-align:center;margin:13px 0 10px;text-shadow:0 2px #653500}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.tile{background:linear-gradient(145deg,#10284c,#07162e);border:1px solid #76500e;border-radius:14px;padding:13px 10px;text-align:center;box-shadow:inset 0 0 0 1px #fff1}.emoji{font-size:29px}.tile h3{margin:5px 0 2px;font-size:15px}
+.wheel-wrap{width:118px;height:118px;margin:0 auto 8px;position:relative}
+.wheel{width:118px;height:118px;border-radius:50%;border:5px solid #ffe18a;background:conic-gradient(#ffcf32 0 20%,#ff8b00 20% 40%,#ffe66b 40% 60%,#bd6500 60% 80%,#ffb900 80% 100%);box-shadow:0 0 15px #ffc92888,inset 0 0 0 3px #7a4300;display:grid;place-items:center;transition:transform 4.2s cubic-bezier(.12,.78,.12,1);position:relative}
+.wheel:before{content:"";position:absolute;inset:8px;border:2px dashed #fff4b0;border-radius:50%}
+.wheel-label{position:absolute;font-size:11px;font-weight:1000;color:#542800;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;line-height:1.6}
+.wheel-pointer{position:absolute;z-index:2;top:-8px;left:50%;transform:translateX(-50%);color:#fff3a1;font-size:23px;text-shadow:0 2px 4px #000}.tile p{margin:3px 0 9px;color:var(--muted);font-size:12px;min-height:30px}.btn{border:0;border-radius:11px;padding:10px 12px;font-weight:900;color:#241400;background:linear-gradient(#ffe875,#ffad00);box-shadow:0 3px 0 #8a4c00;width:100%;cursor:pointer}.btn:active{transform:translateY(2px);box-shadow:0 1px 0 #8a4c00}.btn.blue{background:linear-gradient(#62e7ff,#009bdc);color:#00243b;box-shadow:0 3px 0 #00547c}.btn.green{background:linear-gradient(#a4ff87,#24c44c);color:#07320d;box-shadow:0 3px 0 #087528}.refbox{margin-top:12px}.refrow{display:flex;gap:7px;margin-top:9px}.refurl{min-width:0;flex:1;background:#030b19;border:1px solid #29456c;border-radius:9px;padding:10px;color:#dce9ff;font-size:11px;overflow-wrap:anywhere;text-align:left}.refrow .btn{width:auto;min-width:95px}.muted{color:var(--muted);font-size:12px}.leader{margin-top:12px}.rank{display:flex;justify-content:space-between;padding:8px;border-bottom:1px solid #ffffff16;font-size:13px}.rank b:last-child{color:var(--gold)}.nav{position:fixed;bottom:0;left:0;right:0;background:#041027f2;border-top:1px solid #76500e;display:flex;justify-content:center;z-index:5;padding:7px max(8px,calc((100vw - 520px)/2)) calc(7px + env(safe-area-inset-bottom))}.nav button{flex:1;background:none;border:0;color:#aebdd3;font-weight:800;font-size:11px;padding:5px 0;cursor:pointer}.nav button span{display:block;font-size:22px;margin-bottom:2px}.nav button.active{color:var(--gold);text-shadow:0 0 9px #ffc928}.toast{position:fixed;top:14px;left:50%;transform:translateX(-50%);background:#142d4f;border:1px solid var(--gold);border-radius:20px;padding:10px 16px;z-index:10;display:none;font-size:13px;font-weight:800;max-width:90%;text-align:center}.disclaimer{text-align:center;color:#8194af;font-size:10px;margin:16px 8px}
+</style></head>
+<body><div class="toast" id="toast"></div><main class="wrap">
+<header class="top"><div class="brand"><span class="gem">💎</span> SK GOLD RUSH</div><div class="season">SEASON 01 ▾</div></header>
+<section class="stats">
+<div class="stat"><small>⚡ ENERGY</small><strong id="energy">500 / 500</strong><div class="energybar"><span id="energybar"></span></div></div>
+<div class="stat balance"><small>YOUR GOLD BALANCE</small><strong id="balance">0</strong><small>GOLD POINTS</small></div>
+<div class="stat"><small>🪙 PER TAP</small><strong id="power">+1 GOLD</strong></div>
+</section>
+<section class="taparea"><div class="hint">TAP THE COIN • COLLECT GOLD</div><button class="coin" id="tapcoin" aria-label="Tap to collect gold"><span class="crown">♛</span><span class="coinlogo">SK</span><span class="coinname">GOLD RUSH</span></button><div class="tapnote">Tap the Gold Coin to Collect</div></section>
+<div class="sectiontitle">🚀 BOOST YOUR PROGRESS</div>
+<section class="grid">
+<div class="tile"><div class="emoji">⚡</div><h3>Tap Booster</h3><p>Increase your gold per tap</p><button class="btn" id="upgrade">Upgrade • 100 GOLD</button></div>
+<div class="tile"><div class="emoji">🎁</div><h3>Daily Gift</h3><p>Claim your daily reward</p><button class="btn green" id="daily">Claim +250 GOLD</button></div>
+<div class="tile"><div class="wheel-wrap"><div class="wheel-pointer">▼</div><div class="wheel" id="spinwheel"><div class="wheel-label">50 • 100<br>150 • 250<br>500 GOLD</div></div></div><h3>Lucky Spin</h3><p id="spinresult">Spin the wheel to win gold</p><button class="btn" id="spin">Spin Free</button></div>
+<div class="tile"><div class="emoji">✅</div><h3>Daily Task</h3><p id="missiontext">Tap 100 times to earn 100 gold</p><button class="btn blue" id="mission">Check Task</button></div>
+</section>
+<section class="panel refbox" id="refer"><div class="sectiontitle">🤝 REFERRAL PROGRAM</div><b>Invite Friends & Earn!</b><p class="muted">Share your personal invite link. Reward: 500 demo points for each verified friend.</p><div class="muted">YOUR INVITE LINK</div><div class="refrow"><div class="refurl" id="refurl"></div><button class="btn" id="copyref">Copy Link</button></div><div class="muted" style="margin-top:9px">Referral rewards are not verified or paid in this offline demo. A secure server is required to confirm real referrals.</div></section>
+<section class="panel leader" id="ranks"><div class="sectiontitle">🏆 LEADERBOARD</div><div class="rank"><b>1　GoldMaster</b><b>120,500</b></div><div class="rank"><b>2　Player_786</b><b>98,750</b></div><div class="rank"><b>3　SK_Rakib</b><b>75,200</b></div><p class="muted">Demo leaderboard — not connected to other players yet.</p></section>
+<section class="panel" id="wallet" style="margin-top:12px"><div class="sectiontitle">👛 WALLET</div><b id="walletbalance">0 Gold Points</b><p class="muted">Demo points only. No cryptocurrency or cash withdrawal is available.</p></section>
+<p class="disclaimer">SK GOLD RUSH • Demo game only • Points are stored on this device</p>
+</main>
+<nav class="nav"><button class="active" data-go="tapcoin"><span>⛏️</span>Earn</button><button data-go="upgrade"><span>🚀</span>Boost</button><button data-go="ranks"><span>🏆</span>Ranks</button><button data-go="wallet"><span>👛</span>Wallet</button><button data-go="refer"><span>👥</span>Refer</button></nav>
+<script>
+const $=id=>document.getElementById(id);
+const key='sk_gold_rush_demo_v2';
+let s={balance:0,energy:500,power:1,taps:0,last:Date.now(),daily:'',spin:'',mission:false};
+try{Object.assign(s,JSON.parse(localStorage.getItem(key)||'{}'))}catch(e){}
+const today=()=>new Date().toISOString().slice(0,10);
+function save(){localStorage.setItem(key,JSON.stringify(s));render()}
+function toast(t){const el=$('toast');el.textContent=t;el.style.display='block';clearTimeout(window.tt);window.tt=setTimeout(()=>el.style.display='none',2400)}
+function render(){let add=Math.min(500-s.energy,Math.floor((Date.now()-s.last)/60000));if(add>0){s.energy+=add;s.last=Date.now()}$('balance').textContent=Math.floor(s.balance).toLocaleString();$('walletbalance').textContent=Math.floor(s.balance).toLocaleString()+' Gold Points';$('energy').textContent=s.energy+' / 500';$('energybar').style.width=(s.energy/5)+'%';$('power').textContent='+'+s.power+' GOLD';$('missiontext').textContent=s.taps%100+' / 100 taps completed';$('daily').textContent=s.daily===today()?'Claimed today':'Claim +250 GOLD';$('spin').textContent=s.spin===today()?'Come back tomorrow':'Spin Free';$('upgrade').textContent='Upgrade • '+(100*s.power)+' GOLD'}
+$('tapcoin').addEventListener('click',()=>{if(s.energy<1){toast('Energy is empty. Wait for recharge!');return}s.energy--;s.balance+=s.power;s.taps++;save()});
+$('upgrade').addEventListener('click',()=>{let cost=100*s.power;if(s.balance<cost){toast('Not enough Gold Points');return}s.balance-=cost;s.power++;save();toast('Tap power upgraded!')});
+$('daily').addEventListener('click',()=>{if(s.daily===today()){toast('Daily gift already claimed');return}s.balance+=250;s.daily=today();save();toast('+250 demo points added!')});
+let spinning=false;
+$('spin').addEventListener('click',()=>{
+ if(spinning)return;
+ if(s.spin===today()){toast('You already spun today');return}
+ spinning=true;$('spin').disabled=true;$('spin').textContent='Spinning...';$('spinresult').textContent='Good luck!';
+ const prizes=[50,100,150,250,500],chosen=Math.floor(Math.random()*5),prize=prizes[chosen];
+ const wheel=$('spinwheel'),segment=360/5,target=360*6+(360-(chosen*segment+segment/2));
+ wheel.style.transform='rotate(0deg)';
+ requestAnimationFrame(()=>requestAnimationFrame(()=>{wheel.style.transform='rotate('+target+'deg)'}));
+ setTimeout(()=>{
+  s.balance+=prize;s.spin=today();save();spinning=false;$('spin').disabled=false;
+  $('spinresult').textContent='You won '+prize+' GOLD!';
+  toast('Lucky Spin: +'+prize+' demo points!');
+ },4350);
+});
+$('mission').addEventListener('click',()=>{if(s.taps<100){toast('Complete 100 taps first');return}if(s.mission){toast('Task already claimed');return}s.mission=true;s.balance+=100;save();toast('Task complete: +100 demo points!')});
+let refCode=localStorage.getItem('sk_gold_rush_refcode');if(!refCode){refCode='SK'+Math.random().toString(36).slice(2,8).toUpperCase();localStorage.setItem('sk_gold_rush_refcode',refCode)}const base=location.origin+location.pathname;$('refurl').textContent=base+'?ref='+refCode;
+$('copyref').addEventListener('click',async()=>{let u=$('refurl').textContent;try{await navigator.clipboard.writeText(u);toast('Referral link copied!')}catch(e){let t=document.createElement('textarea');t.value=u;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();toast('Referral link copied!')}});
+const incoming=new URLSearchParams(location.search).get('ref');if(incoming)toast('Welcome! Invite code '+incoming+' detected. Referral reward needs server verification.');
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');$(b.dataset.go).scrollIntoView({behavior:'smooth',block:'center'})}));
+render();setInterval(()=>{let old=s.energy;render();if(old!==s.energy)localStorage.setItem(key,JSON.stringify(s))},10000);
+</script></body></html>
